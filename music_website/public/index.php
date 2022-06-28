@@ -65,6 +65,17 @@
   header .active {
     border-bottom: solid 4px red;
   }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-list {
+    position: absolute;
+    border: solid thin #ccc;
+    background-color: white;
+    margin-top: 10px;
+  }
   </style>
 
   <header>
@@ -76,11 +87,23 @@
       <div class='main-nav'>
         <div class="nav-item active"><a href="">Home</a></div>
         <div class="nav-item"><a href="">Music</a></div>
-        <div class="nav-item"><a href="">Category</a></div>
+        <div class="nav-item dropdown"><a href="">Category</a>
+          <div class='dropdown-list'>
+            <div class="nav-item"><a href="">Country</a></div>
+            <div class="nav-item"><a href="">Pop</a></div>
+            <div class="nav-item"><a href="">R&B</a></div>
+          </div>
+        </div>
         <div class="nav-item"><a href="">Artists</a></div>
         <div class="nav-item"><a href="">About Us</a></div>
         <div class="nav-item"><a href="">Contact Us</a></div>
-        <div class="nav-item"><a href="">Hi, user</a></div>
+        <div class="nav-item dropdown"><a href="">Hi, user</a>
+          <div class='dropdown-list'>
+            <div class="nav-item"><a href="">Profile</a></div>
+            <div class="nav-item"><a href="">Admin</a></div>
+            <div class="nav-item"><a href="">Logout</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
