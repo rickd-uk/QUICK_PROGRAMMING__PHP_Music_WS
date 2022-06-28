@@ -17,7 +17,6 @@
   }
 
   * {
-    min-width: 350px;
     box-sizing: border-box;
   }
 
@@ -29,9 +28,42 @@
 
   }
 
-  body a {
+  body img {
+    width: 100%;
+  }
 
+  body a {
     text-decoration: none;
+  }
+
+  header {
+    display: flex;
+  }
+
+  .logo-holder {
+    max-width: 100px;
+    flex: 1;
+  }
+
+  .header-div {
+    flex: auto;
+  }
+
+  .main-nav {
+    display: flex;
+  }
+
+  .nav-item {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .main-title {
+    padding: 10px;
+  }
+
+  header .active {
+    border-bottom: solid 4px red;
   }
   </style>
 
@@ -42,7 +74,7 @@
     <div class='header-div'>
       <div class='main-title'>MUSIC WEBSITE</div>
       <div class='main-nav'>
-        <div class="nav-item"><a href="">Home</a></div>
+        <div class="nav-item active"><a href="">Home</a></div>
         <div class="nav-item"><a href="">Music</a></div>
         <div class="nav-item"><a href="">Category</a></div>
         <div class="nav-item"><a href="">Artists</a></div>
