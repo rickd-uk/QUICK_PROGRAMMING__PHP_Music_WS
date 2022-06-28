@@ -12,8 +12,26 @@
 
   <style>
   @font-face {
-    src: url('assets/Lato-Regular.ttf');
+    src: url('assets/fonts/Lato/Lato-Regular.ttf');
     font-family: lato;
+  }
+
+  * {
+    min-width: 350px;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-width: 350px;
+    font-family: lato, sans-serif, tahoma;
+    margin: 0px;
+    padding: 0px;
+
+  }
+
+  body a {
+
+    text-decoration: none;
   }
   </style>
 
