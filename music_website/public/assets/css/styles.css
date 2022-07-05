@@ -28,7 +28,7 @@ header {
 }
 
 .logo-holder {
-  max-width: 100px;
+  width: 100px;
   flex: 1;
 }
 
@@ -38,11 +38,13 @@ header {
 
 .main-nav {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .nav-item {
   padding: 10px;
   text-align: center;
+  min-width: 50px;
 }
 
 .main-title {
@@ -150,6 +152,7 @@ footer a {
   display: flex;
   flex: 1;
   padding: 10px;
+  text-align: center;
 }
 
 .footer-div ul {
@@ -184,4 +187,21 @@ footer a {
 
 .follow-links {
   margin-left: auto;
+}
+
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+
+
+  .footer-div {
+    margin: auto;
+  }
 }
