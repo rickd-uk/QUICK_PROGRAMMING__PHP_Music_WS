@@ -3,6 +3,10 @@ section {
 
 }
 
+.logo {
+  width: 140px;
+}
+
 header a {
   color: white;
 }
