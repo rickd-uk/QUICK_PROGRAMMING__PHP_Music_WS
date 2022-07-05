@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./assets/css/styles.css" type="text/css">
-  <script src="./assets/scripts/js.js" defer></script>
+  <link rel="stylesheet" href="./assets/css/login.css" type="text/css">
+  <script src="./assets/js/main.js" defer></script>
   <title>M Site</title>
 </head>
 
@@ -49,75 +50,19 @@
     </div>
   </header>
 
-  <section>
-    <img class="hero" src="assets/images/hero.jpeg" alt="">
-  </section>
 
-  <div class="section-title">Featured</div>
   <section class="content">
-
-
-    <!-- Music card -->
-    <div class="music-card">
-      <div style="overflow: hidden;">
-        <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
-      </div>
-      <div class="card-content">
-        <div class="card-title">Song Title</div>
-        <div class="card-subtitle">Artist's Name</div>
-      </div>
+    <div class="login-holder">
+      <form method="post">
+        <center><img class="logoForLogin" src="assets/images/logo.jpg" alt=""> </center>
+        <h2>Login</h2>
+        <input class="form-control my-1" type="email" name="email" placeholder="Email">
+        <input class="form-control my-1" type="password" name="password" placeholder="Password">
+        <button class="btn bg-blue my-1">Login</button>
+      </form>
     </div>
-    <!-- End Music card -->
-
-    <!-- Music card -->
-    <div class="music-card">
-      <div style="overflow: hidden;">
-        <a href=""><img src="assets/images/01.jpg" alt="">
-        </a>
-      </div>
-      <div class="card-content">
-        <div class="card-title">Song Title</div>
-        <div class="card-subtitle">Artist's Name</div>
-      </div>
-    </div>
-    <!-- End Music card -->
-
-    <!-- Music card -->
-    <div class="music-card">
-      <div style="overflow: hidden;">
-        <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
-      </div>
-      <div class="card-content">
-        <div class="card-title">Song Title</div>
-        <div class="card-subtitle">Artist's Name</div>
-      </div>
-    </div>
-    <!-- End Music card -->
-
-    <!-- Music card -->
-    <div class="music-card">
-      <div style="overflow: hidden;">
-        <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
-      </div>
-      <div class="card-content">
-        <div class="card-title">Song Title</div>
-        <div class="card-subtitle">Artist's Name</div>
-      </div>
-    </div>
-    <!-- End Music card -->
-
-    <!-- Music card -->
-    <div class="music-card">
-      <div style="overflow: hidden;">
-        <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
-      </div>
-      <div class="card-content">
-        <div class="card-title">Song Title</div>
-        <div class="card-subtitle">Artist's Name</div>
-      </div>
-    </div>
-    <!-- End Music card -->
   </section>
+
 
   <footer>
     <div class="footer-div">

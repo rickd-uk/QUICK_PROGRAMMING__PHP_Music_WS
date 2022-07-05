@@ -1,0 +1,48 @@
+.bg-blue {
+  background-color: blue;
+  color: white;
+}
+
+.bg-purple {
+  background-color: purple;
+  color: white;
+}
+
+.bg-orange {
+  background-color: orange;
+  color: white;
+}
+
+.m-1 {
+  margin: 10px;
+}
+
+.m-2 {
+  margin: 20px;
+}
+
+.mx-1 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mx-2 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.my-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.my-2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logoForLogin {
+  width: 150px;
+  border-radius: 50%;
+  border: solid thin #ccc;
+}
