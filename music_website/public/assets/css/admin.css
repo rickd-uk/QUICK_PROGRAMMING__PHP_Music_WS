@@ -1,0 +1,26 @@
+section {
+  min-height: 200px;
+
+}
+
+header a {
+  color: white;
+}
+
+.dropdown-list {
+  background-color: #444;
+}
+
+.admin-header {
+  background-color: #51519b;
+  color: white;
+}
+
+.admin-content {
+  padding: 20px;
+  background-color: #f4e9df;
+}
+
+footer {
+  display: block;
+}
