@@ -1,7 +1,7 @@
 <?php require page('includes/header') ?>
 
 <section>
-  <img class="hero" src="assets/images/hero.jpeg" alt="">
+  <img class="hero" src="<?=ROOT?>/assets/images/hero.jpeg" alt="">
 </section>
 
 <div class="section-title">Featured</div>
@@ -11,7 +11,7 @@
   <!-- Music card -->
   <div class="music-card">
     <div style="overflow: hidden;">
-      <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
+      <a href=""> <img src="<?=ROOT?>/assets/images/01.jpg" alt=""> </a>
     </div>
     <div class="card-content">
       <div class="card-title">Song Title</div>
@@ -23,7 +23,7 @@
   <!-- Music card -->
   <div class="music-card">
     <div style="overflow: hidden;">
-      <a href=""><img src="assets/images/01.jpg" alt="">
+      <a href=""><img src="<?=ROOT?>/assets/images/01.jpg" alt="">
       </a>
     </div>
     <div class="card-content">
@@ -36,7 +36,7 @@
   <!-- Music card -->
   <div class="music-card">
     <div style="overflow: hidden;">
-      <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
+      <a href=""> <img src="<?=ROOT?>/assets/images/01.jpg" alt=""> </a>
     </div>
     <div class="card-content">
       <div class="card-title">Song Title</div>
@@ -48,7 +48,7 @@
   <!-- Music card -->
   <div class="music-card">
     <div style="overflow: hidden;">
-      <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
+      <a href=""> <img src="<?=ROOT?>/assets/images/01.jpg" alt=""> </a>
     </div>
     <div class="card-content">
       <div class="card-title">Song Title</div>
@@ -60,7 +60,7 @@
   <!-- Music card -->
   <div class="music-card">
     <div style="overflow: hidden;">
-      <a href=""> <img src="assets/images/01.jpg" alt=""> </a>
+      <a href=""> <img src="<?=ROOT?>/assets/images/01.jpg" alt=""> </a>
     </div>
     <div class="card-content">
       <div class="card-title">Song Title</div>

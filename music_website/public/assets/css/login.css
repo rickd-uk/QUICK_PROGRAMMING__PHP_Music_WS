@@ -42,7 +42,16 @@
 }
 
 .logoForLogin {
-  width: 150px;
+  width: 100px;
   border-radius: 50%;
   border: solid thin #ccc;
+}
+
+.logo {
+  width: 200px;
+
+}
+
+h2 {
+  color: red;
 }

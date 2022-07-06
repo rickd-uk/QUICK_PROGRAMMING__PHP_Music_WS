@@ -66,7 +66,9 @@ header .active {
 }
 
 
-
+.logo {
+  max-width: 250px;
+}
 
 .dropdown {
   position: relative;

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./assets/css/styles.css" type="text/css">
-  <script src="./assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="<?=ROOT?>/assets/css/styles.css?23" type="text/css">
+  <script src="<?=ROOT?>/assets/js/main.js?4" defer></script>
   <title>M Site</title>
 </head>
 
@@ -14,7 +14,7 @@
 
   <header>
     <div class="logo-holder">
-      <img class="logo" src="assets/images/logo.jpg" alt="">
+      <img class="logo" src="<?=ROOT?>/assets/images/logo.jpg" alt="">
     </div>
     <div class="header-div">
       <div class="main-title">

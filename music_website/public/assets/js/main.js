@@ -24,6 +24,21 @@ const log = (toDisplay) => {
 			prevSelected = i
 		})
 	}
+
+	let links = document.querySelectorAll('.main-nav > .nav-item')
+	let url = window.location.href
+
+	if (url.charAt(url.length - 1) === '/') {
+		url = url.slice(0, url.length - 1)
+	}
+
+	for (let i = 0; i < links.length; i++) {
+		log(links[i].firstChild)
+
+		if (links[i].firstChild.href === url) {
+			links[i].firstChild.classList.add('active')
+		}
+	}
 })()
 
 // default global variables

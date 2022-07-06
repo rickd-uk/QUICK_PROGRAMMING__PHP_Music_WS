@@ -4,7 +4,7 @@
 <section class="content">
   <div class="login-holder">
     <form method="post">
-      <center><img class="logoForLogin" src="assets/images/logo.jpg" alt=""> </center>
+      <center><img class="logoForLogin" src="<?=ROOT?>/assets/images/logo.jpg" alt=""> </center>
       <h2>Login</h2>
       <input class="form-control my-1" type="email" name="email" placeholder="Email">
       <input class="form-control my-1" type="password" name="password" placeholder="Password">
