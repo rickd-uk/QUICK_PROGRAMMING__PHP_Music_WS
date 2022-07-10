@@ -52,9 +52,11 @@ function message($message = '', $clear = false)
   if (!empty($message)) {
     $_SESSION['message'] = $message;
   } else {
-    $msg = $_SERVER['message'];
-    if ($clear) unset($_SESSION['message']);
-    return $msg;
+    if (!empty($_SESSION['message'])) {
+      $msg = $_SESSION['message'];
+      if ($clear) unset($_SESSION['message']);
+      return $msg;
+    }
   }
   return false;
 }
@@ -68,4 +70,26 @@ function redirect($page)
 function validate()
 {
 
+}
+
+function set_value($key) 
+{
+  if (!empty($_POST[$key]))
+  {
+    return $_POST[$key];
+  }
+
+  return '';
+}
+
+function set_selected($key, $value) 
+
+{
+   if (!empty($_POST[$key])) 
+   {
+      if ($_POST[$key] == $value)
+      {
+        return 'selected';
+      }
+   }
 }

@@ -295,6 +295,12 @@ footer a {
   }
 }
 
+.alert {
+  background-color: #e3a6a6cf;
+  color: rgb(201, 35, 35);
+  padding: 8px 16px;
+}
+
 .error {
   color: red;
 }
