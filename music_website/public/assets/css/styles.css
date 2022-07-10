@@ -27,6 +27,68 @@ header {
   display: flex;
 }
 
+/*#region*/
+
+.bg-blue {
+  background-color: blue;
+  color: white;
+}
+
+.bg-purple {
+  background-color: purple;
+  color: white;
+}
+
+.bg-orange {
+  background-color: orange;
+  color: white;
+}
+
+.m-1 {
+  margin: 10px;
+}
+
+.m-2 {
+  margin: 20px;
+}
+
+.mx-1 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mx-2 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.my-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.my-2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/*#endregion*/
+
+.float-start {
+  float: left;
+}
+
+.float-end {
+  float: right;
+}
+
+.mw400 {
+  max-width: 400px;
+  margin: auto;
+}
+
+
+
 .logo-holder {
   width: 100px;
   flex: 1;
@@ -191,8 +253,19 @@ footer a {
   margin-left: auto;
 }
 
+.table {
+  width: 100%;
+  border-collapse: : collapse;
+}
 
-@media (max-width: 768px) {
+.table th,
+.table td {
+  border: solid thin #ccc;
+  padding: 5px 10px;
+}
+
+
+@media (max-width: 668px) {
   header {
     flex-direction: column;
   }
@@ -201,9 +274,27 @@ footer a {
     flex-direction: column;
   }
 
+  .logo {
+    transform: scale(2.8, 1);
+
+    width: auto;
+    transform-origin: 10%;
+
+    min-width: 240px;
+    max-width: 240px;
+
+  }
+
+  .logo-holder {}
+
+
 
 
   .footer-div {
     margin: auto;
   }
+}
+
+.error {
+  color: red;
 }

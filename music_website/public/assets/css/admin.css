@@ -25,6 +25,12 @@ header a {
   background-color: #f4e9df;
 }
 
+.error {
+  color: red;
+}
+
+
+
 footer {
   display: block;
 }

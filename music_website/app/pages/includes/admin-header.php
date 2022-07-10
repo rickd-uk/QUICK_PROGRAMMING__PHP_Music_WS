@@ -31,6 +31,7 @@
       </div>
       <div class="main-nav">
         <div class="nav-item"><a href="<?=ROOT?>/admin">Dashboard</a></div>
+        <div class="nav-item"><a href="<?=ROOT?>/admin/users">Users</a></div>
         <div class="nav-item"><a href="<?=ROOT?>/admin/music">Music</a></div>
         <div class="nav-item dropdown"><a href="<?=ROOT?>/admin/categories">Categories</a>
 
