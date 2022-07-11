@@ -25,6 +25,11 @@ header a {
   background-color: #f4e9df;
 }
 
+.bi {
+  margin: 5px;
+  width: 25px;
+}
+
 .error {
   color: red;
 }

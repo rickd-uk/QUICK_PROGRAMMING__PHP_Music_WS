@@ -256,12 +256,18 @@ footer a {
 .table {
   width: 100%;
   border-collapse: : collapse;
+  background-color: #eee;
 }
 
 .table th,
 .table td {
   border: solid thin #ccc;
   padding: 5px 10px;
+}
+
+.table th {
+  background-color: #444;
+  color: white;
 }
 
 

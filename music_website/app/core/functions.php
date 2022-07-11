@@ -93,3 +93,9 @@ function set_selected($key, $value)
       }
    }
 }
+
+function get_date($date) 
+{
+  // strtotime - converts to an integer
+  return date('jS M, Y', strtotime($date));
+}
