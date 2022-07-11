@@ -23,6 +23,7 @@ header a {
 .admin-content {
   padding: 20px;
   background-color: #f4e9df;
+  min-height: 200px;
 }
 
 .bi {
@@ -34,6 +35,13 @@ header a {
   color: red;
 }
 
+
+/* Artists */
+.artist_img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
 
 
 footer {

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/styles.css?qe" type="text/css">
-  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin.css?242" type="text/css">
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/styles.css?q78e" type="text/css">
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/admin.css?42" type="text/css">
   <script src="<?= ROOT ?>/assets/js/main.js" defer></script>
   <title>M Site</title>
 </head>

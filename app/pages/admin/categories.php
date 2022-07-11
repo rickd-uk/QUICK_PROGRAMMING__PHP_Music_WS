@@ -190,12 +190,12 @@ if ($action == 'delete') {
     ?>
 
 
-  <h4>USERS
-    <a href="<?= ROOT ?>/admin/categories/add">
-      <button class="float-end btn bg-purple">Add New</button>
-    </a>
 
-  </h4>
+  <a href="<?= ROOT ?>/admin/categories/add">
+    <button class="float-end btn bg-purple mb-3">Add New</button>
+  </a>
+
+
   <table class=" table">
     <tr>
       <th>ID</th>

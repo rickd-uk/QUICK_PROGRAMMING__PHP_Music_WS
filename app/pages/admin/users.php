@@ -278,48 +278,45 @@ if ($action == 'delete') {
     $query = 'select * from users order by id desc limit 20';
     $rows = db_query($query);
     ?>
+  <a href="<?= ROOT ?>/admin/users/add">
+    <button class="float-end btn bg-purple mb-3">Add New</button>
+  </a>
 
+  <div style="margin: 20px;">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
 
-  <h4>USERS
-    <a href="<?= ROOT ?>/admin/users/add">
-      <button class="float-end btn bg-purple">Add New</button>
-    </a>
+      <?php if (!empty($rows)) : ?>
+      <?php foreach ($rows as $row) : ?>
+      <tr>
+        <td><?= $row['id'] ?></td>
+        <td><?= $row['username'] ?></td>
+        <td><?= $row['email'] ?></td>
+        <td><?= $row['role'] ?></td>
+        <td><?= get_date($row['date']) ?></td>
+        <td>
+          <a href="<?= ROOT ?>/admin/users/edit/<?= $row['id'] ?>">
+            <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
+          </a>
+          <a href="<?= ROOT ?>/admin/users/delete/<?= $row['id'] ?>">
+            <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
+          </a>
 
-  </h4>
-  <table class=" table">
-    <tr>
-      <th>ID</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Date</th>
-      <th>Action</th>
-    </tr>
+        </td>
+      </tr>
+      <?php endforeach; ?>
+      <?php endif; ?>
 
-    <?php if (!empty($rows)) : ?>
-    <?php foreach ($rows as $row) : ?>
-    <tr>
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['username'] ?></td>
-      <td><?= $row['email'] ?></td>
-      <td><?= $row['role'] ?></td>
-      <td><?= get_date($row['date']) ?></td>
-      <td>
-        <a href="<?= ROOT ?>/admin/users/edit/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
-        </a>
-        <a href="<?= ROOT ?>/admin/users/delete/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
-        </a>
-
-      </td>
-    </tr>
-    <?php endforeach; ?>
+    </table>
     <?php endif; ?>
-
-  </table>
-  <?php endif; ?>
-
+  </div>
 
 </section>
 
