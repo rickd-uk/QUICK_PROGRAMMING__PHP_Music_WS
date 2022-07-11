@@ -118,9 +118,9 @@ if ($action == 'delete') {
       <?php endif; ?>
 
       <a href="<?= ROOT ?>/admin/categories">
-        <button class="btn">Back</button>
+        <button class="btn bg-back">Back</button>
       </a>
-      <button class="btn bg-orange float-end">Save</button>
+      <button class="btn bg-warning float-end">Save</button>
     </form>
   </section>
 
@@ -146,9 +146,9 @@ if ($action == 'delete') {
       </select>
 
       <a href="<?= ROOT ?>/admin/categories">
-        <button type="button" class="btn">Back</button>
+        <button type="button" class="btn bg-back">Back</button>
       </a>
-      <button class="btn bg-orange float-end">Save</button>
+      <button class="btn bg-warning float-end">Save</button>
 
       <?php else : ?>
       <div class="alert">Record was not found</div>
@@ -169,15 +169,12 @@ if ($action == 'delete') {
       <small class='error'><?= $errors['category'] ?></small>
       <?php endif; ?>
 
-      <div class='form-control my-1'><?= set_value('email',  $row['email']) ?></div>
-      <div class='form-control my-1'><?= set_value('disabled',  $row['disabled']) ?></div>
-
 
       <a href="<?= ROOT ?>/admin/categories">
-        <button type="button" class="btn">Back</button>
+        <button type="button" class="btn bg-back">Back</button>
       </a>
 
-      <button class="btn bg-orange float-end">Delete</button>
+      <button class="btn bg-warning float-end">Delete</button>
 
 
       <?php else : ?>

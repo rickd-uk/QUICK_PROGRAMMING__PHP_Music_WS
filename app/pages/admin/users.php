@@ -184,9 +184,9 @@ if ($action == 'delete') {
         name="retyped_password" placeholder="Retype Password">
 
       <a href="<?= ROOT ?>/admin/users">
-        <button class="btn">Back</button>
+        <button class="btn bg-back">Back</button>
       </a>
-      <button class="btn bg-orange float-end">Save</button>
+      <button class="btn bg-warning float-end">Save</button>
     </form>
   </section>
 
@@ -234,9 +234,9 @@ if ($action == 'delete') {
         name="retyped_password" placeholder="Retype Password">
 
       <a href="<?= ROOT ?>/admin/users">
-        <button class="btn">Back</button>
+        <button class="btn bg-back">Back</button>
       </a>
-      <button class="btn bg-orange float-end">Save</button>
+      <button class="btn bg-warning float-end">Save</button>
 
       <?php else : ?>
       <div class="alert">Record was not found</div>
@@ -261,10 +261,10 @@ if ($action == 'delete') {
       <div class='form-control my-1'><?= set_value('role',  $row['role']) ?></div>
 
       <a href="<?= ROOT ?>/admin/users">
-        <button type="button" class="btn">Back</button>
+        <button type="button" class="btn bg-back">Back</button>
       </a>
 
-      <button class="btn bg-orange float-end">Delete</button>
+      <button class="btn bg-warning float-end">Delete</button>
 
 
       <?php else : ?>

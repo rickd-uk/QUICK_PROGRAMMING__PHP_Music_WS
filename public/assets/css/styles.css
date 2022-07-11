@@ -311,3 +311,13 @@ footer a {
 .error {
   color: red;
 }
+
+.bg-back {
+  background-color: rgb(84, 176, 70);
+  color: white;
+}
+
+.bg-warning {
+  background-color: rgb(212, 65, 65);
+  color: white;
+}
