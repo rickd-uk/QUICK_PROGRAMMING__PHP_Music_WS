@@ -1,5 +1,10 @@
 <?php
 
+if (!is_admin()) {
+  message('only admins can access the admin page');
+  redirect('login');
+} 
+
 //  e.g.    /admin/users/edit/200
 //                   1    2   3
 $section  = $URL[1] ?? "dashboard";

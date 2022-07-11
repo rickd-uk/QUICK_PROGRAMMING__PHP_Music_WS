@@ -38,13 +38,18 @@
         <div class="nav-item"><a href="<?=ROOT ?>/artists">Artists</a></div>
         <div class="nav-item"><a href="<?=ROOT ?>/about">About Us</a></div>
         <div class="nav-item"><a href="<?=ROOT ?>/contact">Contact Us</a></div>
-        <div class="nav-item dropdown"><a href="#">Hi, user</a>
+
+       <?php if(is_logged_in()):?>
+        <div class="nav-item dropdown"><a href="#">Hi, <?=user('username')?></a>
           <div class="dropdown-list">
             <div class="nav-item"><a href="<?=ROOT ?>/profile">Profile</a></div>
             <div class="nav-item"><a href="<?=ROOT ?>/admin">Admin</a></div>
             <div class="nav-item"><a href="<?=ROOT ?>/logout">Logout</a></div>
           </div>
         </div>
+       <?php endif?>
+
+       
       </div>
     </div>
   </header>

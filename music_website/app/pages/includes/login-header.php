@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="<?=ROOT?>/assets/css/styles.css" type="text/css">
-  <link rel="stylesheet" href="<?=ROOT?>/assets/css/login.css?2" type="text/css">
+  <link rel="stylesheet" href="<?=ROOT?>/assets/css/styles.css?3332" type="text/css">
+  <link rel="stylesheet" href="<?=ROOT?>/assets/css/login.css?ee332" type="text/css">
   <script src="<?=ROOT?>/assets/js/main.js" defer></script>
   <title>M Site</title>
 </head>
@@ -39,7 +39,7 @@
         <div class="nav-item"><a href="<?=ROOT ?>/artists">Artists</a></div>
         <div class="nav-item"><a href="<?=ROOT ?>/about">About Us</a></div>
         <div class="nav-item"><a href="<?=ROOT ?>/contact">Contact Us</a></div>
-        <div class="nav-item dropdown"><a href="#">Hi, user</a>
+        <div class="nav-item dropdown"><a href="#">Hi, <?=user('username')?></a>
           <div class="dropdown-list">
             <div class="nav-item"><a href="<?=ROOT ?>/profile">Profile</a></div>
             <div class="nav-item"><a href="<?=ROOT ?>/admin">Admin</a></div>

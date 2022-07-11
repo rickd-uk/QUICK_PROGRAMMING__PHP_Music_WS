@@ -99,3 +99,36 @@ function get_date($date)
   // strtotime - converts to an integer
   return date('jS M, Y', strtotime($date));
 }
+
+function is_logged_in() 
+{ 
+   if (!empty($_SESSION['USER']) && is_array($_SESSION['USER']))
+   {
+    return true;
+   }
+   return false;
+}
+
+function is_admin() 
+{ 
+   if (!empty($_SESSION['USER']['role']) && $_SESSION['USER']['role'] == 'admin')
+   {
+    return true;
+   }
+   return false;
+}
+
+function user($col)
+{
+  if (!empty($_SESSION['USER'][$col])) 
+  {
+    return $_SESSION['USER'][$col];
+  }
+
+  return 'unknown';
+}
+
+function authenticate($row)
+{
+ $_SESSION['USER'] = $row;
+}

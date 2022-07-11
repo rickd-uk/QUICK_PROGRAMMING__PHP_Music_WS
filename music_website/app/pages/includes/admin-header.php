@@ -38,7 +38,7 @@
         </div>
         <div class="nav-item"><a href="<?= ROOT ?>/admin/artists">Artists</a></div>
 
-        <div class="nav-item dropdown"><a href="#">Hi, user</a>
+        <div class="nav-item dropdown"><a href="#">Hi, <?=user('username')?></a>
           <div class="dropdown-list">
             <div class="nav-item"><a href="<?= ROOT ?>/profile">Profile</a></div>
             <div class="nav-item"><a href="<?= ROOT ?>">Website</a></div>
@@ -49,7 +49,7 @@
     </div>
   </header>
 
+
   <?php if (message()) : ?>
      <div class="alert"><?=message('',true)?></div>
-
   <?php endif; ?>

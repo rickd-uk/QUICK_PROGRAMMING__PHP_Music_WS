@@ -5,7 +5,10 @@
       <li><a href="">Music</a></li>
       <li><a href="">About Us</a></li>
       <li><a href="">Contact Us</a></li>
-      <li><a href="<?=ROOT?>/login">Login</a></li>
+      <?php if(!is_logged_in()):?>
+        <li><a href="<?=ROOT?>/login">Login</a></li>
+      <?php endif;?>
+     
     </ul>
   </div>
   <div class="footer-div">
