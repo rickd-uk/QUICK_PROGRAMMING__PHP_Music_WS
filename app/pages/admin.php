@@ -3,7 +3,7 @@
 if (!is_admin()) {
   message('only admins can access the admin page');
   redirect('login');
-} 
+}
 
 //  e.g.    /admin/users/edit/200
 //                   1    2   3
@@ -15,9 +15,21 @@ switch ($section) {
   case 'dashboard':
     require page('admin/dashboard');
     break;
-    
+
   case 'users':
     require page('admin/users');
+    break;
+
+  case 'categories':
+    require page('admin/categories');
+    break;
+
+  case 'artists':
+    require page('admin/artists');
+    break;
+
+  case 'music':
+    require page('admin/music');
     break;
 
   default:

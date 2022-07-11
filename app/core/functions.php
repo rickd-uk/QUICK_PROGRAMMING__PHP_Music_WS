@@ -72,17 +72,19 @@ function validate()
 
 }
 
-function set_value($key) 
+function set_value($key, $default = '') 
 {
   if (!empty($_POST[$key]))
   {
     return $_POST[$key];
+  } else {
+    return $default;
   }
 
   return '';
 }
 
-function set_selected($key, $value) 
+function set_selected($key, $value, $default = '') 
 
 {
    if (!empty($_POST[$key])) 
@@ -91,6 +93,11 @@ function set_selected($key, $value)
       {
         return 'selected';
       }
+   } else {
+    if ($default == $value)
+    {
+      return 'selected';
+    }
    }
 }
 
