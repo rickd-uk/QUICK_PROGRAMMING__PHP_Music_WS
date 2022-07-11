@@ -305,7 +305,7 @@ footer a {
   background-color: #e3a6a6cf;
   color: rgb(201, 35, 35);
   padding: 8px 16px;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .error {
