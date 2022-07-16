@@ -173,6 +173,9 @@ if ($action == 'delete') {
       <label>Image</label>
       <input class="form-control my-1" type="file" name="image">
 
+      <label>Bio:</label>
+      <textarea name="bio" class="form-control" cols="30" rows="10"><?= set_value('bio') ?></textarea>
+
       <?php if (!empty($errors['image'])) : ?>
       <small class='error'><?= $errors['image'] ?></small>
       <br> <br>
