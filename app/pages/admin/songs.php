@@ -114,7 +114,7 @@ if ($action == 'edit') {
     // data validation
     if (empty($_POST['title'])) {
       $errors['title'] = 'a title is required';
-    } else if (!preg_match('/^[a-zA-Z \.\!\?\&\-]+$/', $_POST['title'])) {
+    } else if (!preg_match('/^[a-zA-Z0-9 \.\!\?\&\-]+$/', $_POST['title'])) {
       $errors['title'] = 'a title can only have letters with spaces';
     }
 

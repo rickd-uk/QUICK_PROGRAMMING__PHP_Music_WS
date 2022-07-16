@@ -1,14 +1,9 @@
 <?php require page('includes/header') ?>
 
-<section>
-  <img class="hero" src="<?= ROOT ?>/assets/images/hero.jpeg" alt="">
-</section>
-
-<div class="section-title">Featured</div>
 <section class="content">
 
   <?php
-  $rows = db_query('select * from songs order by id desc limit 16');
+  $rows = db_query('select * from songs order by id desc limit 24');
   ?>
 
 

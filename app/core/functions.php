@@ -77,8 +77,6 @@ function set_value($key, $default = '')
   } else {
     return $default;
   }
-
-  return '';
 }
 
 function set_selected($key, $value, $default = '')
@@ -138,31 +136,35 @@ function str_to_url($url)
   $url = trim($url, '-');
   $url = iconv('utf-8', 'us-ascii//TRANSLIT', $url);
   $url = strtolower($url);
-  $url = preg_replace('~[^-a-z0-9_]+~', '',$url);
-  
+  $url = preg_replace('~[^-a-z0-9_]+~', '', $url);
+
   return $url;
 }
 
-function get_category($id) 
+function get_category($id)
 {
   $query = 'select category from categories where id = :id limit 1';
-  $row = db_query($query, ['id'=>$id], 'one');
+  $row = db_query($query, ['id' => $id], 'one');
 
-  if (!empty($row['category']))
-  {
+  if (!empty($row['category'])) {
     return $row['category'];
   }
   return 'unknown';
 }
 
-function get_artist($id) 
+function get_artist($id)
 {
   $query = 'select name from artists where id = :id limit 1';
-  $row = db_query($query, ['id'=>$id], 'one');
+  $row = db_query($query, ['id' => $id], 'one');
 
-  if (!empty($row['name']))
-  {
+  if (!empty($row['name'])) {
     return $row['name'];
   }
   return 'unknown';
+}
+
+
+function esc($str)
+{
+  return htmlspecialchars($str);
 }
