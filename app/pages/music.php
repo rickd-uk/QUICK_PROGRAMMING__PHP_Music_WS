@@ -3,7 +3,7 @@
 <section class="content">
 
   <?php
-  $rows = db_query('select * from songs order by id desc limit 24');
+  $rows = db_query('select * from songs order by views desc limit 24');
   ?>
 
 
