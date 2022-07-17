@@ -29,10 +29,17 @@
         <div class="nav-item"><a href="<?= ROOT ?>">Home</a></div>
         <div class="nav-item"><a href="<?= ROOT ?>/music">Music</a></div>
         <div class="nav-item dropdown"><a href="#">Category</a>
+          <?php
+          $query = 'select * from categories order by category asc';
+          $categories = db_query($query);
+          ?>
+
           <div class="dropdown-list">
-            <div class="nav-item"><a href="">Country</a></div>
-            <div class="nav-item"><a href="">Pop</a></div>
-            <div class="nav-item"><a href="">R&B</a></div>
+            <?php if (!empty($categories)) : ?>
+              <?php foreach ($categories as $cat) : ?>
+                <div class="nav-item"><a href="<?= ROOT ?>/category/<?= $cat['category'] ?>"><?= $cat['category'] ?></a></div>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
         </div>
         <div class="nav-item"><a href="<?= ROOT ?>/artists">Artists</a></div>
