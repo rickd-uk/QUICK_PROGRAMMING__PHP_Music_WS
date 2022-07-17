@@ -5,14 +5,14 @@
       <li><a href="">Music</a></li>
       <li><a href="">About Us</a></li>
       <li><a href="">Contact Us</a></li>
-      <?php if(!is_logged_in()):?>
-        <li><a href="<?=ROOT?>/login">Login</a></li>
-      <?php endif;?>
-     
+      <?php if (!is_logged_in()) : ?>
+        <li><a href="<?= ROOT ?>/login">Login</a></li>
+      <?php endif; ?>
+
     </ul>
   </div>
   <div class="footer-div">
-    <form>
+    <form action="<?= ROOT ?>/search">
       <div class="form-group">
         <input class="form-control" type="text" placeholder="Search for music" name="find">
         <button class="btn">Search</button>
