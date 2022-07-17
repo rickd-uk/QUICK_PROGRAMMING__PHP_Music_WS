@@ -12,6 +12,13 @@ body {
 	font-family: lato, sans-serif, tahoma;
 	margin: 0px;
 	padding: 0px;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 body img {
@@ -327,4 +334,57 @@ footer a {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+.input-boxes {
+	/* each letter will take 1ch + 1px and we remove 1px of the last one*/
+	width: calc(15 * (1ch + 2px) - 1px);
+	border: 1px solid black;
+	background: 
+  /* 1ch space for the letter + 1px border */ repeating-linear-gradient(
+		to right,
+		#fff,
+		#fff 1ch,
+		#000 1ch,
+		#000 calc(1ch + 1px)
+	);
+	font-size: 29px;
+	/*since a letter will take 1ch we add 1px to cover the border*/
+	letter-spacing: 1px;
+	/*we use a monospace font-family so all the letter will take the same width = 1ch*/
+	font-family: monospace;
+}
+
+label.label input[type='file'] {
+	position: absolute;
+	top: -1000px;
+}
+.label {
+	cursor: pointer;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px 15px;
+	margin: 5px;
+	background: #dddddd;
+	display: inline-block;
+}
+.label:hover {
+	background: #5cbd95;
+}
+.label:active {
+	background: #9fa1a0;
+}
+.label:invalid + span {
+	color: #000000;
+}
+.label:valid + span {
+	color: #ffffff;
+}
+
+textarea {
+	resize: none;
+}
+
+.bio {
+	user-select: text;
 }

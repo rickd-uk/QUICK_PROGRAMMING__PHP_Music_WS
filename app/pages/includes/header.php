@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/styles.css?2dsds3" type="text/css">
+  <link rel="stylesheet" href="<?= ROOT ?>/assets/css/styles.css?2dsdghs3" type="text/css">
   <script src="<?= ROOT ?>/assets/js/main.js?4" defer></script>
   <title><?= ucfirst($URL[0]) ?></title>
 </head>
@@ -42,7 +42,7 @@
         <?php if (is_logged_in()) : ?>
           <div class="nav-item dropdown"><a href="#">Hi, <?= user('username') ?></a>
             <div class="dropdown-list">
-              <div class="nav-item"><a href="<?= ROOT ?>/profile">Profile</a></div>
+              <div class="nav-item"><a href="<?= ROOT ?>/admin/users/edit/<?= user('id') ?>">Profile</a></div>
               <div class="nav-item"><a href="<?= ROOT ?>/admin">Admin</a></div>
               <div class="nav-item"><a href="<?= ROOT ?>/logout">Logout</a></div>
             </div>

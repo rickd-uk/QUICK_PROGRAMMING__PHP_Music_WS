@@ -164,7 +164,8 @@ function get_artist($id)
 }
 
 
-function esc($str)
+function esc($str, $ellipsis = '')
 {
-  return htmlspecialchars($str);
+  if (strlen($str) == 0) $ellipsis = '';
+  return nl2br(htmlspecialchars($str) . $ellipsis);
 }

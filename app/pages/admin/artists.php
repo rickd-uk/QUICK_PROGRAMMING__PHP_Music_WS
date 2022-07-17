@@ -135,7 +135,7 @@ if ($action == 'delete') {
     $errors = [];
     if (empty($errors)) {
 
-      
+
 
       $values = [];
       $values['id'] = $id;
@@ -161,133 +161,147 @@ if ($action == 'delete') {
 <section class="admin-content">
 
   <?php if ($action == 'add') : ?>
-  <section class="mw400">
-    <form method="post" enctype="multipart/form-data">
-      <h3>Add New Artist</h3>
-      <input class="form-control my-1" value="<?= set_value('name') ?>" type="text" name="name" placeholder="Name">
-      <?php if (!empty($errors['name'])) : ?>
-      <small class='error'><?= $errors['name'] ?></small>
-      <br> <br>
-      <?php endif; ?>
+    <section class="mw400">
+      <form method="post" enctype="multipart/form-data">
+        <h3>Add New Artist</h3>
+        <!-- <input class="input-boxes" type="text" maxlength="15" name="CNP"> -->
 
-      <label>Image</label>
-      <input class="form-control my-1" type="file" name="image">
 
-      <label>Bio:</label>
-      <textarea name="bio" class="form-control" cols="30" rows="10"><?= set_value('bio') ?></textarea>
 
-      <?php if (!empty($errors['image'])) : ?>
-      <small class='error'><?= $errors['image'] ?></small>
-      <br> <br>
-      <?php endif; ?>
+        <label class="label">
+          <input type="file" required />
+          <span>Select a file</span>
+        </label>
 
-      <a href="<?= ROOT ?>/admin/artists">
-        <button class="btn bg-back">Back</button>
-      </a>
-      <button class="btn bg-warning float-end">Save</button>
-    </form>
-  </section>
+
+
+        <input class="form-control my-1" value="<?= set_value('name') ?>" type="text" name="name" placeholder="Name">
+        <?php if (!empty($errors['name'])) : ?>
+          <small class='error'><?= $errors['name'] ?></small>
+          <br> <br>
+        <?php endif; ?>
+
+        <label>Image</label>
+        <input class="form-control my-1" type="file" name="image">
+
+
+        <textarea placeholder="Write the bio..." name="bio" class="form-control bio" cols="30" rows="10"><?= set_value('bio') ?></textarea>
+
+        <?php if (!empty($errors['image'])) : ?>
+          <small class='error'><?= $errors['image'] ?></small>
+          <br> <br>
+        <?php endif; ?>
+
+        <a href="<?= ROOT ?>/admin/artists">
+          <button class="btn bg-back">Back</button>
+        </a>
+        <button class="btn bg-warning float-end">Save</button>
+      </form>
+    </section>
 
   <?php elseif ($action == 'edit') : ?>
 
-  <section class="mw400">
-    <form method="post" enctype="multipart/form-data">
-      <h3>Edit Artist</h3>
+    <section class="mw400">
+      <form method="post" enctype="multipart/form-data">
+        <h3>Edit Artist</h3>
 
-      <?php if (!empty($row)) : ?>
+        <?php if (!empty($row)) : ?>
 
-      <input class="form-control my-1" value="<?= set_value('name', $row['name']) ?>" type="text" name="name"
-        placeholder="name">
-      <?php if (!empty($errors['name'])) : ?>
-      <small class='error'><?= $errors['name'] ?></small>
-      <?php endif; ?>
+          <input class="form-control my-1" value="<?= set_value('name', $row['name']) ?>" type="text" name="name" placeholder="name">
+          <?php if (!empty($errors['name'])) : ?>
+            <small class='error'><?= $errors['name'] ?></small>
+          <?php endif; ?>
 
-      <img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt="">
-      <input class="form-control my-1" type="file" name="image">
+          <img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt="">
+          <input class="form-control my-1" type="file" name="image">
 
-      <label>Bio:</label>
-      <textarea name="bio" class="form-control" cols="30" rows="10"><?= set_value('bio') ?></textarea>
+          <textarea placeholder="Write the bio..." name="bio" class="form-control bio" cols="30" rows="10"><?= set_value('bio', $row['bio']) ?></textarea>
 
-      <a href="<?= ROOT ?>/admin/artists">
-        <button type="button" class="btn bg-back">Back</button>
-      </a>
-      <button class="btn bg-warning float-end">Save</button>
+          <a href="<?= ROOT ?>/admin/artists">
+            <button type="button" class="btn bg-back">Back</button>
+          </a>
+          <button class="btn bg-warning float-end">Save</button>
 
-      <?php else : ?>
-      <div class="alert">Record was not found</div>
-      <?php endif; ?>
-    </form>
-  </section>
+        <?php else : ?>
+          <div class="alert">Record was not found</div>
+        <?php endif; ?>
+      </form>
+    </section>
   <?php elseif ($action == 'delete') : ?>
-  <section class="mw400">
-    <form method="post">
-      <h3>Delete Artist</h3>
+    <section class="mw400">
+      <form method="post">
+        <h3>Delete Artist</h3>
 
-      <?php if (!empty($row)) : ?>
-
-
-      <div class='form-control my-1'><?= set_value('name', $row['name']) ?></div>
-
-      <?php if (!empty($errors['name'])) : ?>
-      <small class='error'><?= $errors['name'] ?></small>
-      <?php endif; ?>
+        <?php if (!empty($row)) : ?>
 
 
-      <a href="<?= ROOT ?>/admin/artists">
-        <button type="button" class="btn bg-back">Back</button>
-      </a>
+          <div class='form-control my-1'><?= set_value('name', $row['name']) ?></div>
 
-      <button class="btn bg-warning float-end">Delete</button>
+          <?php if (!empty($errors['name'])) : ?>
+            <small class='error'><?= $errors['name'] ?></small>
+          <?php endif; ?>
 
 
-      <?php else : ?>
-      <div class="alert">Record was not found</div>
-      <?php endif; ?>
-    </form>
-  </section>
+          <a href="<?= ROOT ?>/admin/artists">
+            <button type="button" class="btn bg-back">Back</button>
+          </a>
+
+          <button class="btn bg-warning float-end">Delete</button>
+
+
+        <?php else : ?>
+          <div class="alert">Record was not found</div>
+        <?php endif; ?>
+      </form>
+    </section>
   <?php else : ?>
 
-  <?php
+    <?php
     $query = 'select * from artists order by id desc limit 20';
     $rows = db_query($query);
     ?>
 
-  <a href="<?= ROOT ?>/admin/artists/add">
-    <button class="float-end btn bg-purple mb-3">Add New</button>
-  </a>
+    <a href="<?= ROOT ?>/admin/artists/add">
+      <button class="float-end btn bg-purple mb-3">Add New</button>
+    </a>
 
 
-  <table class=" table">
-    <tr>
-      <th>ID</th>
-      <th>Image</th>
-      <th>Artist</th>
-      <th>Action</th>
+    <table class=" table">
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Artist</th>
+        <th>Action</th>
 
-    </tr>
+      </tr>
 
-    <?php if (!empty($rows)) : ?>
-    <?php foreach ($rows as $row) : ?>
-    <tr>
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['name'] ?></td>
-      <td><img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt=""></td>
+      <?php if (!empty($rows)) : ?>
+        <?php foreach ($rows as $row) : ?>
+          <tr>
+            <td><?= $row['id'] ?></td>
+            <td><?= $row['name'] ?></td>
+            <td>
+              <a href="<?= ROOT ?>/artist/<?= $row['id'] ?>">
+                <img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt="">
+              </a>
+
+            </td>
 
 
-      <td>
-        <a href="<?= ROOT ?>/admin/artists/edit/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
-        </a>
-        <a href="<?= ROOT ?>/admin/artists/delete/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
-        </a>
+            <td>
+              <a href="<?= ROOT ?>/admin/artists/edit/<?= $row['id'] ?>">
+                <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
+              </a>
+              <a href="<?= ROOT ?>/admin/artists/delete/<?= $row['id'] ?>">
+                <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
+              </a>
 
-      </td>
-    </tr>
-    <?php endforeach; ?>
-    <?php endif; ?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
 
-  </table>
+    </table>
   <?php endif; ?>
 
 

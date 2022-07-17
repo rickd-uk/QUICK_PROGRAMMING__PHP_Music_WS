@@ -7,10 +7,10 @@
     <img src="<?= ROOT ?>/<?= $row['image'] ?>">
   </div>
   <div class="card-content">
-    <div><?= esc($row['bio']) ?></div>
+    <div class="bio"><?= esc($row['bio']) ?></div>
 
     <div>Artist Songs:</div>
-    <div class="fw-jcc">
+    <div class=" fw-jcc">
       <?php
 
       $query = "select * from songs where artist_id = :artist_id order by views desc limit 20";
