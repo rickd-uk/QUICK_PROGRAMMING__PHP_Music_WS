@@ -18,6 +18,11 @@ db_query("update songs set views = views + 1 where id = :id limit 1", ['id' => $
 
     <div>Views: <?= $row['views'] ?></div>
     <div>Date Added: <?= get_date($row['date']) ?></div>
+
+    <a href="<?= ROOT ?>/download/<?= $row['slug'] ?>">
+      <button class="btn btn-purple">Download</button>
+    </a>
+
   </div>
 
 </div>
