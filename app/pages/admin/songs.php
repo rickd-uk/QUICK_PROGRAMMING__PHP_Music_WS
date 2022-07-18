@@ -456,10 +456,10 @@ if ($action == 'delete') {
   <?php endif; ?>
 
   <div class="mx-2">
-    <a href="<?= ROOT ?>/admin/songs?page=<?= $prev_page ?>">
+    <a href="<?= ROOT ?>/admin/songs?page=<?= (string)$prev_page ?>">
       <button class="btn bg-orange">Prev.</button>
     </a>
-    <a href="<?= ROOT ?>/admin/songs?page=<?= $next_page ?>">
+    <a href="<?= ROOT ?>/admin/songs?page=<?= (string)$next_page ?>">
       <button class="float-end btn bg-orange">Next</button>
     </a>
   </div>

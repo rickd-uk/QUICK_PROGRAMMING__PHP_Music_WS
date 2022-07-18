@@ -5,27 +5,36 @@
   <?php
   $limit = 1;
   $offset = ($page - 1) * $limit;
-  $songs_avaliable = true;
 
   $rows = db_query("select * from songs order by views desc limit $limit offset $offset");
+
+  // lookahead to hide next button for last page (temporary solution)
+  // Wasteful since it calculates it every page
+  $offset = $offset + 1;
+  $lookahead = db_query("select * from songs order by views desc limit $limit offset $offset");
   ?>
 
-  <?php if (!empty($rows)) : ?>
-    <?php foreach ($rows as $row) : ?>
-      <?php include page('includes/song') ?>
-    <?php endforeach; ?>
-  <?php else : ?>
-    No Songs!
-  <?php endif; ?>
+
+  <?php
+
+  if (!empty($rows)) :
+    foreach ($rows as $row) :
+      include page('includes/song');
+    endforeach;
+  endif;
+  ?>
 </section>
 
 <div class="mx-2">
-  <a href="<?= ROOT ?>/music?page=<?= $prev_page ?>">
+  <a href="<?= ROOT ?>/music?page=<?= (string)$prev_page ?>">
     <button class="btn bg-orange">Prev.</button>
   </a>
-  <a href="<?= ROOT ?>/music?page=<?= $next_page ?>">
-    <button class="float-end btn bg-orange">Next</button>
-  </a>
+
+  <?php if (!empty($lookahead)) : ?>
+    <a href="<?= ROOT ?>/music?page=<?= (string)$next_page ?>">
+      <button class="float-end btn bg-orange">Next</button>
+    <?php endif; ?>
+    </a>
 </div>
 
 <?php require page('includes/footer') ?>

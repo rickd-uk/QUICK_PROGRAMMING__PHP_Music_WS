@@ -259,6 +259,7 @@ footer a {
 	border: none;
 	padding: 10px 20px;
 	cursor: pointer;
+	margin-bottom: 1rem;
 }
 
 .follow-links {
