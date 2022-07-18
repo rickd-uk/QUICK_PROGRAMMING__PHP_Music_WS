@@ -5,7 +5,7 @@
 if ($action == 'add') {
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = [];
-    
+
     // data validation
     if (empty($_POST['title'])) {
       $errors['title'] = 'a title is required';
@@ -13,13 +13,11 @@ if ($action == 'add') {
       $errors['title'] = 'a title can only have letters, &, and spaces';
     }
 
-    if (empty($_POST['category_id'])) 
-    {
-       $errors['category_id'] = 'a category is required';
+    if (empty($_POST['category_id'])) {
+      $errors['category_id'] = 'a category is required';
     }
-    if (empty($_POST['artist_id'])) 
-    {
-       $errors['artist_id'] = 'an artist is required';
+    if (empty($_POST['artist_id'])) {
+      $errors['artist_id'] = 'an artist is required';
     }
 
 
@@ -51,34 +49,28 @@ if ($action == 'add') {
       $errors['image'] = 'Image is required';
     }
 
-  
-    	//audio file
-			if(!empty($_FILES['audio']['name']))
-			{
 
-				$folder = "uploads/";
-				if(!file_exists($folder))
-				{
-					mkdir($folder,0777,true);
-					file_put_contents($folder."index.php", "");
-				}
+    //audio file
+    if (!empty($_FILES['audio']['name'])) {
 
-				$allowed = ['audio/mpeg', 'audio/wav'];
-				if($_FILES['audio']['error'] == 0 && in_array($_FILES['audio']['type'], $allowed))
-				{
-					
-					$destination_audio = $folder. $_FILES['audio']['name'];
+      $folder = "uploads/";
+      if (!file_exists($folder)) {
+        mkdir($folder, 0777, true);
+        file_put_contents($folder . "index.php", "");
+      }
 
-					move_uploaded_file($_FILES['audio']['tmp_name'], $destination_audio);
+      $allowed = ['audio/mpeg', 'audio/wav'];
+      if ($_FILES['audio']['error'] == 0 && in_array($_FILES['audio']['type'], $allowed)) {
 
-				}else{
-					$errors['audio'] = "file not valid. allowed types are ". implode(",", $allowed);
-				}
-				
+        $destination_audio = $folder . $_FILES['audio']['name'];
 
-			}else{
-				$errors['audio'] = "an audio file is required";
-			}
+        move_uploaded_file($_FILES['audio']['tmp_name'], $destination_audio);
+      } else {
+        $errors['audio'] = "file not valid. allowed types are " . implode(",", $allowed);
+      }
+    } else {
+      $errors['audio'] = "an audio file is required";
+    }
 
 
     if (empty($errors)) {
@@ -133,7 +125,7 @@ if ($action == 'edit') {
         $destination_image = $folder . $_FILES['image']['name'];
 
         show($destination_image);
-       
+
 
         move_uploaded_file($_FILES['image']['tmp_name'], $destination_image);
 
@@ -160,7 +152,7 @@ if ($action == 'edit') {
       $values['id'] = $id;
 
       $query = 'update songs set  title = :title, user_id = :user_id, category_id = :category_id, artist_id = :artist_id ';
-      
+
 
       if (!empty($destination_image)) {
 
@@ -201,8 +193,7 @@ if ($action == 'delete') {
       db_query($query, $values);
 
       // delete old audio
-      if (file_exists($row['audio']))
-      {
+      if (file_exists($row['audio'])) {
         unlink($row['audio']);
       }
 
@@ -222,244 +213,256 @@ if ($action == 'delete') {
 <section class="admin-content">
 
   <?php if ($action == 'add') : ?>
-  <section class="mw400">
-    <form method="post" enctype="multipart/form-data">
-      <h3>Add New Song</h3>
-      <input class="form-control my-1" value="<?= set_value('title') ?>" type="text" name="title"
-        placeholder="Song title">
-      <?php if (!empty($errors['title'])) : ?>
-      <small class='error'><?= $errors['title'] ?></small>
-      <?php endif; ?>
+    <section class="mw400">
+      <form method="post" enctype="multipart/form-data">
+        <h3>Add New Song</h3>
+        <input class="form-control my-1" value="<?= set_value('title') ?>" type="text" name="title" placeholder="Song title">
+        <?php if (!empty($errors['title'])) : ?>
+          <small class='error'><?= $errors['title'] ?></small>
+        <?php endif; ?>
 
-      <?php
+        <?php
         $query = 'select * from categories order by category asc';
         $categories = db_query($query);
         ?>
 
-      <select name="category_id" class="form-control my-1">
-        <option value="">--Select Category--</option>
+        <select name="category_id" class="form-control my-1">
+          <option value="">--Select Category--</option>
 
-        <?php if (!empty($categories)) : ?>
-        <?php foreach ($categories as $cat) : ?>
-        <option <?= set_selected('category_id', $cat['id']) ?> value="<?=$cat['id']?>"><?=$cat['category']?></option>
-        <?php endforeach; ?>
+          <?php if (!empty($categories)) : ?>
+            <?php foreach ($categories as $cat) : ?>
+              <option <?= set_selected('category_id', $cat['id']) ?> value="<?= $cat['id'] ?>"><?= $cat['category'] ?></option>
+            <?php endforeach; ?>
+          <?php endif; ?>
+
+        </select>
+        <?php if (!empty($errors['category_id'])) : ?>
+          <small class='error'><?= $errors['category_id'] ?></small>
         <?php endif; ?>
 
-      </select>
-      <?php if (!empty($errors['category_id'])) : ?>
-      <small class='error'><?= $errors['category_id'] ?></small>
-      <?php endif; ?>
-
-      <?php
+        <?php
         $query = 'select * from artists order by name asc';
         $artists = db_query($query);
         ?>
 
 
-      <select name="artist_id" class="form-control my-1">
-        <option value="">--Select Artist--</option>
-        <?php if (!empty($artists)) : ?>
-        <?php foreach ($artists as $art) : ?>
-        <option <?= set_selected('artist_id', $art['id']) ?> value="<?=$art['id']?>"><?=$art['name']?></option>
-        <?php endforeach; ?>
-        <?php endif; ?>
-      </select>
-      <?php if (!empty($errors['artist_id'])) : ?>
-      <small class='error'><?= $errors['artist_id'] ?></small>
-      <?php endif; ?>
-
-      <div class='form-control my-1'>
-        <div class="mb-1">Image</div>
-        <input type="file" name="image">
-
-        <?php if (!empty($errors['image'])) : ?>
-        <small class='error'><?= $errors['image'] ?></small>
+        <select name="artist_id" class="form-control my-1">
+          <option value="">--Select Artist--</option>
+          <?php if (!empty($artists)) : ?>
+            <?php foreach ($artists as $art) : ?>
+              <option <?= set_selected('artist_id', $art['id']) ?> value="<?= $art['id'] ?>"><?= $art['name'] ?></option>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </select>
+        <?php if (!empty($errors['artist_id'])) : ?>
+          <small class='error'><?= $errors['artist_id'] ?></small>
         <?php endif; ?>
 
-      </div>
+        <div class='form-control my-1'>
+          <div class="mb-1">Image</div>
+          <input type="file" name="image">
 
-      <div class='form-control my-1'>
-        <div class="mb-1">Audio File</div>
-        <input type="file" name="audio">
+          <?php if (!empty($errors['image'])) : ?>
+            <small class='error'><?= $errors['image'] ?></small>
+          <?php endif; ?>
 
-        <?php if (!empty($errors['audio'])) : ?>
-        <small class='error'><?= $errors['audio'] ?></small>
-        <?php endif; ?>
-      </div>
+        </div>
+
+        <div class='form-control my-1'>
+          <div class="mb-1">Audio File</div>
+          <input type="file" name="audio">
+
+          <?php if (!empty($errors['audio'])) : ?>
+            <small class='error'><?= $errors['audio'] ?></small>
+          <?php endif; ?>
+        </div>
 
 
-      <a href="<?= ROOT ?>/admin/songs">
-        <button class="btn bg-back">Back</button>
-      </a>
-      <button class="btn bg-warning float-end">Save</button>
-    </form>
-  </section>
+        <a href="<?= ROOT ?>/admin/songs">
+          <button class="btn bg-back">Back</button>
+        </a>
+        <button class="btn bg-warning float-end">Save</button>
+      </form>
+    </section>
 
   <?php elseif ($action == 'edit') : ?>
 
-  <section class="mw400">
-    <form method="post" enctype="multipart/form-data">
-      <h3>Edit Song</h3>
+    <section class="mw400">
+      <form method="post" enctype="multipart/form-data">
+        <h3>Edit Song</h3>
 
-      <?php if (!empty($row)) : ?>
+        <?php if (!empty($row)) : ?>
 
-      <input class="form-control my-1" value="<?= set_value('title', $row['title']) ?>" type="text" name="title"
-        placeholder="Song title">
-      <?php if (!empty($errors['title'])) : ?>
-      <small class='error'><?= $errors['title'] ?></small>
-      <?php endif; ?>
+          <input class="form-control my-1" value="<?= set_value('title', $row['title']) ?>" type="text" name="title" placeholder="Song title">
+          <?php if (!empty($errors['title'])) : ?>
+            <small class='error'><?= $errors['title'] ?></small>
+          <?php endif; ?>
 
-      <?php
-        $query = 'select * from categories order by category asc';
-        $categories = db_query($query);
-        ?>
+          <?php
+          $query = 'select * from categories order by category asc';
+          $categories = db_query($query);
+          ?>
 
-      <select name="category_id" class="form-control my-1">
-        <option value="">--Select Category--</option>
+          <select name="category_id" class="form-control my-1">
+            <option value="">--Select Category--</option>
 
-        <?php if (!empty($categories)) : ?>
-        <?php foreach ($categories as $cat) : ?>
-        <option <?= set_selected('category_id', $cat['id'], $row['category_id']) ?> value="<?=$cat['id']?>">
-          <?=$cat['category']?></option>
-        <?php endforeach; ?>
+            <?php if (!empty($categories)) : ?>
+              <?php foreach ($categories as $cat) : ?>
+                <option <?= set_selected('category_id', $cat['id'], $row['category_id']) ?> value="<?= $cat['id'] ?>">
+                  <?= $cat['category'] ?></option>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+          </select>
+          <?php if (!empty($errors['category_id'])) : ?>
+            <small class='error'><?= $errors['category_id'] ?></small>
+          <?php endif; ?>
+
+          <?php
+          $query = 'select * from artists order by name asc';
+          $artists = db_query($query);
+          ?>
+
+
+          <select name="artist_id" class="form-control my-1">
+            <option value="">--Select Artist--</option>
+            <?php if (!empty($artists)) : ?>
+              <?php foreach ($artists as $art) : ?>
+                <option <?= set_selected('artist_id', $art['id'], $row['artist_id']) ?> value="<?= $art['id'] ?>">
+                  <?= $art['name'] ?></option>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </select>
+          <?php if (!empty($errors['artist_id'])) : ?>
+            <small class='error'><?= $errors['artist_id'] ?></small>
+          <?php endif; ?>
+
+          <div class='form-control my-1'>
+            <div class="mb-1">Image</div>
+
+            <img class="image" src="<?= ROOT ?>/<?= $row['image'] ?>" alt="<?= $row['image'] ?>">
+            <input type="file" name="image">
+            <?php if (!empty($errors['image'])) : ?>
+              <small class='error'><?= $errors['image'] ?></small>
+            <?php endif; ?>
+
+          </div>
+
+          <div class='form-control my-1'>
+            <div class="mb-1">Audio File</div>
+            <div><?= $row['audio'] ?></div>
+            <input type="file" name="audio">
+
+            <?php if (!empty($errors['audio'])) : ?>
+              <small class='error'><?= $errors['audio'] ?></small>
+            <?php endif; ?>
+          </div>
+
+
+
+          <a href="<?= ROOT ?>/admin/songs">
+            <button type="button" class="btn bg-back">Back</button>
+          </a>
+          <button class="btn bg-warning float-end">Save</button>
+
+        <?php else : ?>
+          <div class="alert">Record was not found</div>
         <?php endif; ?>
-
-      </select>
-      <?php if (!empty($errors['category_id'])) : ?>
-      <small class='error'><?= $errors['category_id'] ?></small>
-      <?php endif; ?>
-
-      <?php
-        $query = 'select * from artists order by name asc';
-        $artists = db_query($query);
-        ?>
-
-
-      <select name="artist_id" class="form-control my-1">
-        <option value="">--Select Artist--</option>
-        <?php if (!empty($artists)) : ?>
-        <?php foreach ($artists as $art) : ?>
-        <option <?= set_selected('artist_id', $art['id'], $row['artist_id']) ?> value="<?=$art['id']?>">
-          <?=$art['name']?></option>
-        <?php endforeach; ?>
-        <?php endif; ?>
-      </select>
-      <?php if (!empty($errors['artist_id'])) : ?>
-      <small class='error'><?= $errors['artist_id'] ?></small>
-      <?php endif; ?>
-
-      <div class='form-control my-1'>
-        <div class="mb-1">Image</div>
-
-        <img class="image" src="<?=ROOT?>/<?=$row['image']?>" alt="<?=$row['image']?>">
-        <input type="file" name="image">
-        <?php if (!empty($errors['image'])) : ?>
-        <small class='error'><?= $errors['image'] ?></small>
-        <?php endif; ?>
-
-      </div>
-
-      <div class='form-control my-1'>
-        <div class="mb-1">Audio File</div>
-        <div><?=$row['audio']?></div>
-        <input type="file" name="audio">
-
-        <?php if (!empty($errors['audio'])) : ?>
-        <small class='error'><?= $errors['audio'] ?></small>
-        <?php endif; ?>
-      </div>
-
-
-
-      <a href="<?= ROOT ?>/admin/songs">
-        <button type="button" class="btn bg-back">Back</button>
-      </a>
-      <button class="btn bg-warning float-end">Save</button>
-
-      <?php else : ?>
-      <div class="alert">Record was not found</div>
-      <?php endif; ?>
-    </form>
-  </section>
+      </form>
+    </section>
   <?php elseif ($action == 'delete') : ?>
-  <section class="mw400">
-    <form method="post">
-      <h3>Delete Song</h3>
+    <section class="mw400">
+      <form method="post">
+        <h3>Delete Song</h3>
 
-      <?php if (!empty($row)) : ?>
-
-
-      <div class='form-control my-1'><?= set_value('title', $row['title']) ?></div>
-
-      <?php if (!empty($errors['title'])) : ?>
-      <small class='error'><?= $errors['title'] ?></small>
-      <?php endif; ?>
+        <?php if (!empty($row)) : ?>
 
 
-      <a href="<?= ROOT ?>/admin/songs">
-        <button type="button" class="btn bg-back">Back</button>
-      </a>
+          <div class='form-control my-1'><?= set_value('title', $row['title']) ?></div>
 
-      <button class="btn bg-warning float-end">Delete</button>
+          <?php if (!empty($errors['title'])) : ?>
+            <small class='error'><?= $errors['title'] ?></small>
+          <?php endif; ?>
 
 
-      <?php else : ?>
-      <div class="alert">Record was not found</div>
-      <?php endif; ?>
-    </form>
-  </section>
+          <a href="<?= ROOT ?>/admin/songs">
+            <button type="button" class="btn bg-back">Back</button>
+          </a>
+
+          <button class="btn bg-warning float-end">Delete</button>
+
+
+        <?php else : ?>
+          <div class="alert">Record was not found</div>
+        <?php endif; ?>
+      </form>
+    </section>
   <?php else : ?>
 
-  <?php
-    $query = 'select * from songs order by id desc limit 20';
+    <?php
+
+    $limit = 10;
+    $offset = ($page - 1) * $limit;
+    $songs_avaliable = true;
+
+    $query = "select * from songs order by id desc limit $limit offset $offset";
     $rows = db_query($query);
     ?>
 
-  <a href="<?= ROOT ?>/admin/songs/add">
-    <button class="float-end btn bg-purple mb-3">Add New</button>
-  </a>
+    <a href="<?= ROOT ?>/admin/songs/add">
+      <button class="float-end btn bg-purple mb-3">Add New</button>
+    </a>
 
 
-  <table class=" table">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Category</th>
-      <th>Artist</th>
-      <th>Audio</th>
-      <th>Action</th>
-    </tr>
+    <table class=" table">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Category</th>
+        <th>Artist</th>
+        <th>Audio</th>
+        <th>Action</th>
+      </tr>
 
-    <?php if (!empty($rows)) : ?>
-    <?php foreach ($rows as $row) : ?>
-    <tr>
-      <td><?= $row['id'] ?></td>
-      <td><?= $row['title'] ?></td>
-      <td><img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt=""></td>
-      <td><?=get_category($row['category_id'])?> </td>
-      <td><?=get_artist($row['artist_id'])?> </td>
-      <td>
-        <audio controls>
-          <source src="<?=ROOT?>/<?=$row['audio']?>" type="audio/mpeg">
-        </audio>
-      </td>
+      <?php if (!empty($rows)) : ?>
+        <?php foreach ($rows as $row) : ?>
+          <tr>
+            <td><?= $row['id'] ?></td>
+            <td><?= $row['title'] ?></td>
+            <td><img class='artist_img' src="<?= ROOT ?>/<?= $row['image'] ?>" alt=""></td>
+            <td><?= get_category($row['category_id']) ?> </td>
+            <td><?= get_artist($row['artist_id']) ?> </td>
+            <td>
+              <audio controls>
+                <source src="<?= ROOT ?>/<?= $row['audio'] ?>" type="audio/mpeg">
+              </audio>
+            </td>
 
-      <td>
-        <a href="<?= ROOT ?>/admin/songs/edit/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
-        </a>
-        <a href="<?= ROOT ?>/admin/songs/delete/<?= $row['id'] ?>">
-          <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
-        </a>
+            <td>
+              <a href="<?= ROOT ?>/admin/songs/edit/<?= $row['id'] ?>">
+                <img class="bi" src="<?= ROOT ?>/assets/icons/pencil-square.svg" alt="">
+              </a>
+              <a href="<?= ROOT ?>/admin/songs/delete/<?= $row['id'] ?>">
+                <img class="bi" src="<?= ROOT ?>/assets/icons/trash3.svg" alt="">
+              </a>
 
-      </td>
-    </tr>
-    <?php endforeach; ?>
-    <?php endif; ?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
 
-  </table>
+    </table>
   <?php endif; ?>
+
+  <div class="mx-2">
+    <a href="<?= ROOT ?>/admin/songs?page=<?= $prev_page ?>">
+      <button class="btn bg-orange">Prev.</button>
+    </a>
+    <a href="<?= ROOT ?>/admin/songs?page=<?= $next_page ?>">
+      <button class="float-end btn bg-orange">Next</button>
+    </a>
+  </div>
 
 
 </section>

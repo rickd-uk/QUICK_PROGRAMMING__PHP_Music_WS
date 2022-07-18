@@ -179,6 +179,10 @@ header .active {
 	width: 200px;
 	margin: 20px;
 	background-color: #eee;
+
+	justify-content: space-between;
+	flex-direction: column;
+	display: flex;
 }
 
 .music-card img {
@@ -197,6 +201,8 @@ header .active {
 
 .card-title {
 	font-size: 18px;
+	justify-content: flex-start;
+	display: flex;
 }
 
 .card-subtitle {
